@@ -3,6 +3,7 @@ import 'package:crypto_wallet_ui/amount_card.dart';
 import 'package:crypto_wallet_ui/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 void main() => runApp(const MyApp());
@@ -63,11 +64,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         color: UiColors.white,
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AmountCard(),
-            ActionSection()
+            const AmountCard(),
+            const ActionSection(),
+            Container(
+              padding: const EdgeInsets.only(left: 20),
+              child: Column(
+                children: [
+                  const Text("Top Movers", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: UiColors.black),),
+              Container(
+                height: 90,
+                width: 150,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: UiColors.lightGrey
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("% 27.18", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: UiColors.black),),
+                    const Text("% BTC 2.043 ₺", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: UiColors.black),),
+                  ],
+                )
+              )
+                ],
+              ),
+            )
           ],
         ),
       ),
