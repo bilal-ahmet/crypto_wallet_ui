@@ -98,7 +98,7 @@ class _ActionSectionState extends State<ActionSection> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             const Text(
-                              "Receive",
+                              "Send",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
