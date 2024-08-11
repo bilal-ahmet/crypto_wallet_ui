@@ -2,6 +2,7 @@ import 'package:crypto_wallet_ui/action_section.dart';
 import 'package:crypto_wallet_ui/amount_card.dart';
 import 'package:crypto_wallet_ui/constants/constants.dart';
 import 'package:crypto_wallet_ui/mover_section.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -73,7 +74,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: ,
+      bottomNavigationBar: CurvedNavigationBar(
+        maxWidth: MediaQuery.of(context).size.width,
+        height: 50,
+        backgroundColor: UiColors.black,
+        color: UiColors.darkPurple,
+        buttonBackgroundColor: UiColors.darkPurple,
+        items: [
+          Image.asset("assets/Home.png"),
+          Image.asset("assets/wallet.png"),
+          Image.asset("assets/wallet.png"),
+          Image.asset("assets/market.png"),
+          Image.asset("assets/setting.png"),
+        ]),
     );
   }
 }
