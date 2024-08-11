@@ -27,6 +27,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int currentPageIndex = 0;
+  GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,26 +70,42 @@ class _MyHomePageState extends State<MyHomePage> {
         color: UiColors.white,
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AmountCard(),
-            ActionSection(),
-            MoverSection()
-          ],
+          children: [AmountCard(), ActionSection(), MoverSection()],
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
-        maxWidth: MediaQuery.of(context).size.width,
-        height: 50,
-        backgroundColor: UiColors.black,
+        height: 60,
+        key: bottomNavigationKey,
+        backgroundColor: UiColors.white,
         color: UiColors.darkPurple,
         buttonBackgroundColor: UiColors.darkPurple,
+        index: currentPageIndex,
+        letIndexChange: (value) => true,
+        onTap: (value) {
+          currentPageIndex = value;
+        },
         items: [
           Image.asset("assets/Home.png"),
           Image.asset("assets/wallet.png"),
-          Image.asset("assets/wallet.png"),
+          Container(child: const Text("s")),
           Image.asset("assets/market.png"),
           Image.asset("assets/setting.png"),
-        ]),
+        ]
+      ),
+      floatingActionButton: SizedBox(
+        height: 70,
+        width: 70,
+        child: FloatingActionButton(
+          onPressed: () {
+            final CurvedNavigationBarState? navBarState = bottomNavigationKey.currentState;
+            navBarState?.setPage(2);
+          },
+          backgroundColor: UiColors.mediumPurple,
+          shape: const CircleBorder(),
+          child: Image.asset("assets/swap-fill.png"),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
